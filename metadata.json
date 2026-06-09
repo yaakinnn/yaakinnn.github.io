@@ -1,0 +1,6 @@
+{
+  "name": "Multimedia Creator Portfolio",
+  "description": "High-fidelity multimedia portfolio featuring video editing, 3D design, motion graphics, and photography, inspired by pacomepertant.com with robust, responsive media embedding.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
