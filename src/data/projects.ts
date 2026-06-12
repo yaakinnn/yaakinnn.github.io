@@ -15,27 +15,41 @@ export function normalizeEmbedUrl(url: string, type: string): string {
 
   try {
     if (type === 'youtube') {
-      // Handle https://www.youtube.com/watch?v=abc123yz
-      if (cleanUrl.includes('youtube.com/watch')) {
-        const urlParams = new URLSearchParams(new URL(cleanUrl).search);
-        const videoId = urlParams.get('v');
-        if (videoId) return `https://www.youtube.com/embed/${videoId}?autoplay=0&mute=0&rel=0`;
+      // Handle when the URL is actually just a video ID (usually 11 characters)
+      if (/^[a-zA-Z0-9_-]{11}$/.test(cleanUrl)) {
+        return `https://www.youtube.com/embed/${cleanUrl}?autoplay=0&mute=0&rel=0`;
       }
+
+      // Handle standard sharing URLs with youtube.com/watch
+      if (cleanUrl.includes('youtube.com/watch') || cleanUrl.includes('m.youtube.com/watch')) {
+        try {
+          const urlParams = new URLSearchParams(new URL(cleanUrl).search);
+          const videoId = urlParams.get('v');
+          if (videoId) return `https://www.youtube.com/embed/${videoId}?autoplay=0&mute=0&rel=0`;
+        } catch {
+          // If URL parsing fails, try manual regex fallback
+          const match = cleanUrl.match(/[?&]v=([^&#]+)/);
+          if (match && match[1]) return `https://www.youtube.com/embed/${match[1]}?autoplay=0&mute=0&rel=0`;
+        }
+      }
+
       // Handle https://youtu.be/abc123yz
       if (cleanUrl.includes('youtu.be/')) {
         const parts = cleanUrl.split('youtu.be/');
         const videoIdWithQuery = parts[parts.length - 1];
-        const videoId = videoIdWithQuery.split('?')[0];
+        const videoId = videoIdWithQuery.split('?')[0].split('/')[0];
         if (videoId) return `https://www.youtube.com/embed/${videoId}?autoplay=0&mute=0&rel=0`;
       }
+
       // Handle https://www.youtube.com/shorts/abc123yz
       if (cleanUrl.includes('youtube.com/shorts/')) {
         const parts = cleanUrl.split('/shorts/');
-        const videoId = parts[parts.length - 1].split('?')[0];
+        const videoId = parts[parts.length - 1].split('?')[0].split('/')[0];
         if (videoId) return `https://www.youtube.com/embed/${videoId}`;
       }
+
       // Return URL as-is if already in embed format
-      if (cleanUrl.includes('youtube.com/embed/')) {
+      if (cleanUrl.includes('youtube.com/embed/') || cleanUrl.includes('youtube-nocookie.com/embed/')) {
         return cleanUrl;
       }
     }

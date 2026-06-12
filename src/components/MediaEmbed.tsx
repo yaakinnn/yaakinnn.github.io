@@ -88,7 +88,6 @@ export default function MediaEmbed({ project }: MediaEmbedProps) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             onLoad={handleMediaLoad}
-            referrerPolicy="no-referrer"
           />
         </div>
       )}
