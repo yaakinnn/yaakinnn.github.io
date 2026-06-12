@@ -36,16 +36,55 @@ import {
   CheckCircle,
   HelpCircle,
   ArrowRight,
-  Clock
+  Clock,
+  Lock,
+  Unlock,
+  Key,
+  LogOut
 } from 'lucide-react';
 
 export default function ConsolePage() {
   const [activeTab, setActiveTab] = useState<'projects' | 'timeline' | 'endorsements' | 'export'>('projects');
   
+  // Simple username & password lock
+  const [isLocked, setIsLocked] = useState(true);
+  const [inputUser, setInputUser] = useState('');
+  const [inputPass, setInputPass] = useState('');
+  const [loginError, setLoginError] = useState('');
+
   // Data States
   const [projects, setProjects] = useState<Project[]>([]);
   const [timeline, setTimeline] = useState<TimelineItem[]>([]);
   const [reviews, setReviews] = useState<ClientReview[]>([]);
+
+  // Check login state on mount
+  useEffect(() => {
+    const isAuth = sessionStorage.getItem('portfolio_editor_authorized');
+    if (isAuth === 'true') {
+      setIsLocked(false);
+    }
+  }, []);
+
+  const handleLoginSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Predefined secure default credentials
+    if (inputUser.trim() === 'admin' && inputPass === 'admin123') {
+      setIsLocked(false);
+      sessionStorage.setItem('portfolio_editor_authorized', 'true');
+      setLoginError('');
+      showToast('Welcome back, Creative Director!');
+    } else {
+      setLoginError('Invalid Username or Password. Please try again.');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsLocked(true);
+    sessionStorage.removeItem('portfolio_editor_authorized');
+    setInputUser('');
+    setInputPass('');
+    showToast('Secure session logged out.');
+  };
 
   // UI Feedback
   const [copied, setCopied] = useState(false);
@@ -293,6 +332,94 @@ export default function ConsolePage() {
     });
   };
 
+  if (isLocked) {
+    return (
+      <div className="w-full max-w-md mx-auto py-12 px-4 sm:py-24 animate-fade-in" id="console-auth-container">
+        {notification && (
+          <div className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-white text-black font-semibold text-xs font-mono tracking-widest uppercase px-6 py-3 rounded-full shadow-2xl z-[9999] flex items-center gap-2 border border-black/10 transition-all duration-300 animate-slide-up">
+            <CheckCircle className="w-4 h-4 text-green-600" />
+            <span>{notification}</span>
+          </div>
+        )}
+
+        <div className="border border-white/[0.08] bg-onyx-900/80 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-white/[0.02] rounded-full blur-2xl pointer-events-none -mr-10 -mt-10"></div>
+          
+          <div className="flex flex-col items-center text-center mb-8">
+            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white mb-4 shadow-lg">
+              <Lock className="w-6 h-6 text-yellow-400 animate-pulse" />
+            </div>
+            <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white uppercase col-span-2">
+              CREATIVE LOCKBOX
+            </h2>
+            <p className="font-mono text-[9px] uppercase tracking-widest text-onyx-400 mt-2">
+              SECURE PORTFOLIO GATEWAY
+            </p>
+          </div>
+
+          <form onSubmit={handleLoginSubmit} className="flex flex-col gap-5 text-xs text-onyx-200" id="login-form">
+            <div className="flex flex-col gap-2">
+              <label className="font-mono text-[9px] text-onyx-400 uppercase tracking-widest flex items-center gap-1.5 font-medium">
+                <span className="w-1 h-1 rounded-full bg-white/40"></span>
+                <span>USERNAME</span>
+              </label>
+              <input
+                type="text"
+                required
+                value={inputUser}
+                onChange={e => setInputUser(e.target.value)}
+                placeholder="Enter console username"
+                className="w-full bg-black/60 border border-white/10 focus:border-white rounded-lg px-4 py-3 placeholder:text-onyx-600 focus:outline-none transition-colors font-mono"
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="font-mono text-[9px] text-onyx-400 uppercase tracking-widest flex items-center gap-1.5 font-medium">
+                <span className="w-1 h-1 rounded-full bg-white/40"></span>
+                <span>SECURED PASSWORD</span>
+              </label>
+              <input
+                type="password"
+                required
+                value={inputPass}
+                onChange={e => setInputPass(e.target.value)}
+                placeholder="••••••••"
+                className="w-full bg-black/60 border border-white/10 focus:border-white rounded-lg px-4 py-3 placeholder:text-onyx-600 focus:outline-none transition-colors font-mono"
+              />
+            </div>
+
+            {loginError && (
+              <div className="p-3 bg-red-950/25 border border-red-500/25 text-red-400 rounded-lg font-mono text-[10px] uppercase tracking-wider text-center animate-shake" id="login-error-alert">
+                {loginError}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="w-full px-6 py-3.5 bg-white text-black font-semibold text-[10px] font-mono uppercase tracking-widest rounded-lg transition-all hover:bg-onyx-100 flex items-center justify-center gap-2 shadow-lg active:scale-98 cursor-pointer group mt-2"
+              id="btn-login-submit"
+            >
+              <Unlock className="w-4 h-4 transition-transform group-hover:scale-110" />
+              <span>Unlock Admin Console</span>
+            </button>
+          </form>
+
+          {/* Elegant hint explaining values - super clean developer touch */}
+          <div className="mt-8 pt-6 border-t border-white/[0.04] text-center">
+            <span className="font-mono text-[8px] tracking-widest text-onyx-500 uppercase block select-none">
+              DEFAULT SYSTEM CREDENTIALS:
+            </span>
+            <div className="inline-flex gap-4 font-mono text-[9px] text-yellow-400/80 bg-white/[0.02] border border-white/[0.04] px-4 py-2 rounded-full mt-3">
+              <span>USER: <strong className="text-white">admin</strong></span>
+              <span className="text-white/20">|</span>
+              <span>PASS: <strong className="text-white">admin123</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full max-w-6xl mx-auto py-4 sm:py-8 animate-fade-in" id="console-workspace">
       {/* Toast notifier banner */}
@@ -330,6 +457,16 @@ export default function ConsolePage() {
           >
             <RefreshCw className="w-3 h-3" />
             <span>Reset Database Defaults</span>
+          </button>
+
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 bg-white/5 hover:bg-white/15 text-white border border-white/10 hover:border-white/20 font-mono text-[9px] tracking-widest uppercase rounded-lg transition-all flex items-center gap-1.5 cursor-pointer"
+            title="Securely lock the console session"
+            id="btn-logout"
+          >
+            <LogOut className="w-3 h-3" />
+            <span>Logout</span>
           </button>
         </div>
       </div>
