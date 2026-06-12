@@ -171,14 +171,14 @@ export default function App() {
         {!currentHash.startsWith('#/project/') && currentHash !== '#/about' && currentHash !== '#/contact' && (
           <section className="mb-12 sm:mb-16 md:mb-20 max-w-4xl" id="stage-hero-heading animate-fade-in">
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-[0.9] text-white">
-              CRAFTING SOUND & <br />
-              <span className="text-stroke-white transition-all font-light italic">MOTION DESIGNS</span>
+              CRAFTING IMMERSIVE <br />
+              <span className="text-stroke-white transition-all font-light italic">VISUAL ENGINES</span>
             </h1>
             <p className="mt-6 text-sm text-onyx-400 font-mono tracking-widest uppercase flex items-center gap-1.5 flex-wrap">
               <span>AVAILABLE NOW FOR COMMISSIONS</span>
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
               <span className="text-white/20">|</span>
-              <span>DIRECTOR • MOTION ARTIST • VIDEO EDITOR</span>
+              <span>VIDEOGRAPHER • PHOTOGRAPHER • VIDEO EDITOR • MOTION ARTIST</span>
             </p>
           </section>
         )}
@@ -203,12 +203,12 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex flex-col gap-1.5">
             <p className="font-display text-sm font-bold tracking-widest text-white uppercase flex items-center gap-2">
-              <span>YAKIN MAULANA</span>
+              <span>YAKINNN</span>
               <span className="text-white/40">✲</span>
-              <span className="font-mono text-[9px] font-normal text-onyx-400">DESIGN PORTFOLIO 2026</span>
+              <span className="font-mono text-[9px] font-normal text-onyx-400">CREATIVE PORTFOLIO 2026</span>
             </p>
             <p className="text-[10px] font-mono text-onyx-500 uppercase tracking-widest">
-              Inspired by the minimalism of pacomepertant.com
+              Mochammad Ainul Yakin
             </p>
           </div>
 
@@ -229,11 +229,11 @@ export default function App() {
             </a>
 
             <a 
-              href="mailto:yakinm100@gmail.com"
+              href="mailto:yakinworkspace@gmail.com"
               className="text-[10px] font-mono text-white hover:text-onyx-300 uppercase tracking-widest border border-white/10 hover:border-white/30 px-3.5 py-1.5 rounded-full transition-all"
               id="footer-mail-trigger"
             >
-              HIRE@YAKINMAULANA.COM
+              YAKINWORKSPACE@GMAIL.COM
             </a>
           </div>
         </div>

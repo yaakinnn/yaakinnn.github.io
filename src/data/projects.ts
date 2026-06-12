@@ -237,21 +237,64 @@ export const projectsData: Project[] = [
 
 export const clientReviews: ClientReview[] = [
   {
-    name: 'Sarah Connor',
-    role: 'Art Director',
-    company: 'Cyberpunk Apparel Co.',
-    comment: 'An incredibly detailed editor who brings music, sound accents, and speed-ramps together seamlessly. The visual styling and pacing exceeded our expectations!'
+    name: 'Oasis South Florida Cigar Lounge',
+    role: 'Video Editor',
+    company: 'Charlotte Creative',
+    comment: 'I am very satisfied with the work of this editor. Communication was clear and fast, and their approach to revisions was professional and solution-oriented. They analyzed the raw footage very well and built the rhythm and story in the right way. The color, pacing, and music synchronization fully matched my expectations. Most importantly, they didn’t just “edit and deliver” — they truly took ownership of the project. The work was delivered on time, and no details were neglected. I would definitely work with them again and highly recommend them to anyone looking for a reliable and professional video editor.'
   },
   {
-    name: 'Marcus Sterling',
-    role: 'Curator',
-    company: 'Metropolitan Digital Gallery',
-    comment: 'The fluid dynamics simulation was a centerpiece of our modern physics art exhibition. Exceptional understanding of 3D forms, shadows, and spatial sound design.'
+    name: 'Wedding film of Kristin & Patrick',
+    role: 'Video Editor',
+    company: 'ACK Wedding',
+    comment: 'I worked with this editor on a second project and once again had a very positive experience. They followed the instructions carefully, understood the style I was looking for, and delivered clean, well-paced edits. Communication was smooth throughout the process, and revisions were handled quickly and professionally. The final result was consistent with my expectations and delivered on time. I appreciate their reliability and attention to detail, and I would be happy to work with them again on future projects.'
   },
   {
-    name: 'Elena Rostova',
-    role: 'Managing Editor',
-    company: 'Nocturnal Japan Magazine',
-    comment: 'Able to turn simple landscape recordings into engaging urban narratives with an impeccable custom color grading and retro overlay choice.'
+    name: 'Dream teamtales',
+    role: 'Video Editor',
+    company: 'Birthday Surprises Video',
+    comment: 'Yakin was very quick and very responsive. He made all the changes i requested and was very patient with me. He understood what I was requesting very quickly and the process was easy and pain-free. I would highly recommend working with him! I am very happy with the result :)'
+  },
+  {
+    name: 'Omar Hernande',
+    role: 'Motion graphic',
+    company: 'DAS Report',
+    comment: 'As always, thank you for the services and open to received our request to modify the projects went was need it.'
+  },
+  {
+    name: 'Brian',
+    role: 'Video Editor',
+    company: 'brianshotwells',
+    comment: 'Exactly what I wanted. Great communication, fast delivery. Will use again.'
+  },
+  {
+    name: 'Antonio',
+    role: 'Video Editor',
+    company: 'Teacher material',
+    comment: 'Wonderful experience. The seller went above and beyond to deliver what I needed. Thanks!'
+  },
+  {
+    name: "healvc's",
+    role: 'Video Editor',
+    company: 'Personal Content',
+    comment: 'Literally couldn’t of asked for more, incredible person to work with'
+  },
+  {
+    name: 'Mike',
+    role: 'Video Editor',
+    company: 'Leadfeeder',
+    comment: "Great work. I'm a repeat customer, and I've never been disappointed."
+  },
+    {
+    name: "Joharof's",
+    role: 'Video Editor',
+    company: 'Prima Villa',
+    comment: 'Great working with yakin.'
+  },
+    {
+    name: "jennifer rokasky's",
+    role: 'Video Editor',
+    company: 'Prince William Education Assiociation',
+    comment: 'This was my first experience with fiverr and yakinm was great to work with! I would use them again.'
   }
+
 ];

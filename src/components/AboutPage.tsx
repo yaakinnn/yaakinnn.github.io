@@ -18,10 +18,10 @@ export default function AboutPage() {
   }, []);
 
   const skills = [
-    { name: 'Video Editing', icon: Film, tools: ['Adobe Premiere Pro', 'DaVinci Resolve', 'Avid Media Composer'] },
-    { name: 'Motion Design', icon: Flame, tools: ['Adobe After Effects', 'Cinema 4D', 'Blender'] },
-    { name: '3D Modeling & Rendering', icon: Palette, tools: ['Blender 4.0', 'Octane Render', 'Redshift'] },
-    { name: 'Digital Art', icon: Cpu, tools: ['Photoshop', 'Illustrator', 'Figma'] }
+    { name: 'Video Editing', icon: Film, tools: ['Adobe Premiere Pro', 'DaVinci Resolve', 'Capcut'] },
+    { name: 'Motion Design', icon: Flame, tools: ['Adobe After Effects', 'Blender'] },
+    { name: '3D Modeling & Rendering', icon: Palette, tools: ['Blender', 'Unreal Engine'] },
+    // { name: 'Digital Art', icon: Cpu, tools: ['Photoshop', 'Illustrator', 'Figma'] }
   ];
 
   return (
@@ -41,11 +41,11 @@ export default function AboutPage() {
           </h1>
           
           <p className="text-sm sm:text-base text-onyx-300 leading-relaxed font-sans font-light">
-            I am a video editor, motion director, and 3D designer focused on the synthesis of motion, space, and sound. Based on physical phenomena and modern metropolitan pacing, my creative workflow explores the overlap of high-contrast cyber aesthetics with realistic raw photography.
+            Hi my name is Yakin, I’m fluent in the Adobe Creative Suite, mainly working around videography and video editing. Right now, I’m building my motion design portfolio while slowly getting into motion graphics and 3D.
           </p>
 
           <p className="text-sm text-onyx-400 leading-relaxed font-sans font-light">
-            By combining standard timelines with dynamic virtual simulations (Fluidics, cloth dynamics, brutalist architecture), I aim with every frame to guide viewer curiosity without cluttering screens.
+            I like turning ideas into visuals that actually feel alive and meaningful, not just something that looks good. Most of my focus right now is growing my skills and exploring how video, motion, and 3D can work together in a more interesting way.
           </p>
 
           <div className="pt-4 flex flex-wrap gap-4">
@@ -59,7 +59,7 @@ export default function AboutPage() {
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
-              href="mailto:yakinm100@gmail.com"
+              href="mailto:yakinworkspace@gmail.com"
               className="px-6 py-3 border border-white/10 hover:border-white/30 text-white rounded-full text-xs font-mono tracking-widest uppercase transition-all duration-300 hover:bg-white/[0.03] active:scale-95 cursor-pointer"
               data-cursor="EMAIL ME"
               id="about-email-cta"
@@ -74,8 +74,8 @@ export default function AboutPage() {
           <div className="absolute inset-x-0 -bottom-8 -right-4 w-full h-full bg-onyx-900 border border-white/[0.04] rounded-2xl -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-500" />
           <div className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-onyx-900 border border-white/[0.08] shadow-2xl">
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-              alt="Yakin Maulana Creative portrait"
+              src="assets/img/yaakinnn.webp"
+              alt="Mochammad Ainul Yakin yaakinnn Creative portrait"
               className="w-full h-full object-cover grayscale brightness-90 group-hover:brightness-100 group-hover:scale-102 transition-all duration-700"
               id="author-profile-photo"
             />
@@ -85,7 +85,7 @@ export default function AboutPage() {
             <div className="absolute bottom-6 left-6 right-6">
               <p className="font-mono text-[9px] text-white/50 uppercase tracking-widest mb-1">Located in</p>
               <p className="font-display text-lg text-white font-medium flex items-center gap-1">
-                <span>Jakarta, Indonesia</span>
+                <span>Surabaya, Indonesia</span>
                 <span className="text-xs text-onyx-400">GMT+7</span>
               </p>
             </div>

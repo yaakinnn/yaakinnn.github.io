@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { Mail, Check, Copy, ArrowUpRight, Youtube, Instagram, Linkedin, Send, Sparkles } from 'lucide-react';
+import { img } from 'motion/react-client';
 
 export default function ContactPage() {
   const [copied, setCopied] = useState(false);
@@ -12,7 +13,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const myEmail = 'yakinm100@gmail.com';
+  const myEmail = 'yakinworkspace@gmail.com';
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(myEmail);
@@ -42,10 +43,10 @@ export default function ContactPage() {
   };
 
   const socialLinks = [
-    { name: 'Instagram', handle: '@yakinmaulana', url: 'https://instagram.com/', icon: Instagram },
-    { name: 'LinkedIn', handle: 'Yakin Maulana', url: 'https://linkedin.com/', icon: Linkedin },
-    { name: 'YouTube', handle: 'Yakin Studio', url: 'https://youtube.com/', icon: Youtube },
-    { name: 'Vimeo', handle: 'Yakin Creative', url: 'https://vimeo.com/', icon: Mail }, // Standard placeholder icon
+    { name: 'Instagram', handle: '@yaakinnn', url: 'https://instagram.com/', icon: Instagram },
+    { name: 'LinkedIn', handle: 'Mochammad Ainul Yakin', url: 'https://linkedin.com/', icon: Linkedin },
+    // { name: 'YouTube', handle: 'Yakin Studio', url: 'https://youtube.com/', icon: Youtube },
+    // { name: 'Vimeo', handle: 'Yakin Creative', url: 'https://vimeo.com/', img src="assets/img/upwork-icon.webp" }, // Standard placeholder icon
   ];
 
   return (
@@ -135,7 +136,8 @@ export default function ContactPage() {
               </div>
               <h3 className="font-display text-2xl font-bold uppercase text-white">Message Transmitted</h3>
               <p className="text-xs sm:text-sm text-onyx-300 font-sans tracking-wide max-w-sm">
-                Terima kasih, Yakin! Pesan Anda telah berhasil disubmit. Saya akan meninjau proposal Anda dan menghubungi Anda kembali kurang dari 24 jam.
+                Thank you!, Your inquiry has been received successfully. I'll carefully review your proposal and respond within the next 24 hours.
+
               </p>
               <button
                 onClick={() => setSubmitted(false)}

@@ -8,22 +8,16 @@ import { projectsData, clientReviews as defaultReviews } from './projects';
 
 const DEFAULT_TIMELINE: TimelineItem[] = [
   {
-    year: '2025 - Present',
-    role: 'Senior Motion & Video Director',
-    company: 'Metropolis Digital Studios',
-    description: 'Directing cinematic content and commercial video campaigns for global lifestyle brands. Leading a team of three editors and sound designers.'
+    year: '2022 - Present',
+    role: 'Photographer, Videographer, Video Editor',
+    company: 'LZY Visual',
+    description: 'Captured and crafted compelling visual stories through photography, videography, and editing. Collaborated with teams to create high-quality content that connects brands with their audiences.'
   },
   {
-    year: '2023 - 2025',
-    role: 'Creative Motion Designer',
-    company: 'Dimension Studio Paris',
-    description: 'Designed and composite 3D fluid simulations and structural architectural installations for commercial spaces.'
-  },
-  {
-    year: '2021 - 2023',
-    role: 'Junior Video Editor',
-    company: 'French National Broadcast Corp.',
-    description: 'Assisted in offline video editing, audio synchronization, speed-ramping, and localized trailer color corrections.'
+    year: '2018 - 2022',
+    role: 'Videographer, Video Editor, Motion Graphics',
+    company: 'Freelancer',
+    description: 'Creating high-quality visual content through videography, video editing, and motion graphics, delivering engaging and purposeful storytelling that aligns with brand identity and communication goals.'
   }
 ];
 

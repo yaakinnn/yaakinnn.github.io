@@ -68,7 +68,7 @@ export default function ConsolePage() {
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Predefined secure default credentials
-    if (inputUser.trim() === 'admin' && inputPass === 'admin123') {
+    if (inputUser.trim() === 'yakin' && inputPass === 'yakiniku159') {
       setIsLocked(false);
       sessionStorage.setItem('portfolio_editor_authorized', 'true');
       setLoginError('');
@@ -404,17 +404,7 @@ export default function ConsolePage() {
             </button>
           </form>
 
-          {/* Elegant hint explaining values - super clean developer touch */}
-          <div className="mt-8 pt-6 border-t border-white/[0.04] text-center">
-            <span className="font-mono text-[8px] tracking-widest text-onyx-500 uppercase block select-none">
-              DEFAULT SYSTEM CREDENTIALS:
-            </span>
-            <div className="inline-flex gap-4 font-mono text-[9px] text-yellow-400/80 bg-white/[0.02] border border-white/[0.04] px-4 py-2 rounded-full mt-3">
-              <span>USER: <strong className="text-white">admin</strong></span>
-              <span className="text-white/20">|</span>
-              <span>PASS: <strong className="text-white">admin123</strong></span>
-            </div>
-          </div>
+          
         </div>
       </div>
     );
