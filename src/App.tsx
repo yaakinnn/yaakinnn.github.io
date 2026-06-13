@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import Navbar from './components/Navbar';
-import MouseFollower from './components/MouseFollower';
-import ProjectGrid from './components/ProjectGrid';
-import ProjectDetail from './components/ProjectDetail';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { ArrowUp, Clock } from 'lucide-react';
 import AboutPage from './components/AboutPage';
-import ContactPage from './components/ContactPage';
-import { getStoredProjects } from './data/store';
 import ConsolePage from './components/ConsolePage';
-import { ArrowUp, Award, Clock } from 'lucide-react';
+import ContactPage from './components/ContactPage';
+import MouseFollower from './components/MouseFollower';
+import Navbar from './components/Navbar';
+import ProjectDetail from './components/ProjectDetail';
+import ProjectGrid from './components/ProjectGrid';
+import { getStoredProjects } from './data/store';
 
 export default function App() {
   const [currentHash, setCurrentHash] = useState<string>(window.location.hash || '#/');
@@ -26,7 +26,7 @@ export default function App() {
     setProjects(getStoredProjects());
   }, [currentHash]);
 
-  // 2. Synced Real-time UTC Clock (Improves high-end professional designer aesthetic)
+  // Synced Real-time UTC Clock
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -37,12 +37,11 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // 2. Hash Routing synchronization
+  // Hash Routing synchronization
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash || '#/';
       setCurrentHash(hash);
-      // Automatically scroll to top on page navigation
       window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
@@ -50,7 +49,7 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // 3. Scroll to top visibility listener
+  // Scroll to top visibility listener
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
@@ -64,7 +63,7 @@ export default function App() {
   };
 
   const handleBackToWorks = () => {
-    const currentCategory = ['video-editing', 'motion-3d', 'photography'].find(cat => currentHash.includes(cat));
+    const currentCategory = ['video-editing', 'motion-3d', 'photography'].find((cat) => currentHash.includes(cat));
     if (currentCategory) {
       window.location.hash = `#/${currentCategory}`;
     } else {
@@ -76,13 +75,12 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // 4. Resolve Route templates & filtering
+  // Resolve Route templates & filtering
   const renderRoute = () => {
-    // A. Project details route match: #/project/:id
     if (currentHash.startsWith('#/project/')) {
       const projectId = currentHash.replace('#/project/', '');
       const project = projects.find((p) => p.id === projectId);
-      
+
       if (project) {
         return (
           <ProjectDetail
@@ -92,23 +90,21 @@ export default function App() {
             onBack={handleBackToWorks}
           />
         );
-      } else {
-        // Project fallback
-        return (
-          <div className="py-24 text-center">
-            <h2 className="font-display text-xl text-white mb-4 uppercase">Project Not Found</h2>
-            <button 
-              onClick={() => handleNavigate('#/')}
-              className="px-6 py-2.5 bg-white text-black text-xs font-mono tracking-widest rounded-full uppercase"
-            >
-              Get Back to works
-            </button>
-          </div>
-        );
       }
+
+      return (
+        <div className="py-24 text-center">
+          <h2 className="font-display text-xl text-white mb-4 uppercase">Project Not Found</h2>
+          <button
+            onClick={() => handleNavigate('#/')}
+            className="px-6 py-2.5 bg-white text-black text-xs font-mono tracking-widest rounded-full uppercase"
+          >
+            Get Back to works
+          </button>
+        </div>
+      );
     }
 
-    // B. Static pages
     switch (currentHash) {
       case '#/about':
         return <AboutPage />;
@@ -116,8 +112,6 @@ export default function App() {
         return <ContactPage />;
       case '#/console':
         return <ConsolePage />;
-      
-      // C. Filterable pages
       case '#/video-editing':
         return (
           <ProjectGrid
@@ -142,8 +136,6 @@ export default function App() {
             activeCategory="photography"
           />
         );
-      
-      // Home / Selected Works fallback
       case '#/':
       default:
         return (
@@ -166,23 +158,6 @@ export default function App() {
 
       {/* 3. Main Stage Content Container */}
       <main className="flex-grow pt-28 sm:pt-32 pb-20 px-6 sm:px-10 max-w-7xl mx-auto w-full">
-        
-        {/* Splash Jumbotron headers - ONLY shown on primary Home or categories */}
-        {!currentHash.startsWith('#/project/') && currentHash !== '#/about' && currentHash !== '#/contact' && (
-          <section className="mb-12 sm:mb-16 md:mb-20 max-w-4xl" id="stage-hero-heading animate-fade-in">
-            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-[0.9] text-white">
-              CRAFTING IMMERSIVE <br />
-              <span className="text-stroke-white transition-all font-light italic">VISUAL ENGINES</span>
-            </h1>
-            <p className="mt-6 text-sm text-onyx-400 font-mono tracking-widest uppercase flex items-center gap-1.5 flex-wrap">
-              <span>AVAILABLE NOW FOR COMMISSIONS</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-              <span className="text-white/20">|</span>
-              <span>VIDEOGRAPHER • PHOTOGRAPHER • VIDEO EDITOR • MOTION ARTIST</span>
-            </p>
-          </section>
-        )}
-
         {/* Dynamic page render with high-fidelity React Motion fade transition */}
         <AnimatePresence mode="wait">
           <motion.div
@@ -218,8 +193,8 @@ export default function App() {
               <Clock className="w-3.5 h-3.5 text-onyx-500" />
               <span>{currentTime || 'Syncing UTC time...'}</span>
             </div>
-            
-            <a 
+
+            <a
               href="#/console"
               className="text-[10px] font-mono text-yellow-400 hover:text-yellow-300 uppercase tracking-widest border border-yellow-400/25 hover:border-yellow-400/50 px-3.5 py-1.5 rounded-full transition-all flex items-center gap-1.5"
               id="footer-console-trigger"
@@ -228,7 +203,7 @@ export default function App() {
               <span>CREATIVE CONSOLE (DB)</span>
             </a>
 
-            <a 
+            <a
               href="mailto:yakinworkspace@gmail.com"
               className="text-[10px] font-mono text-white hover:text-onyx-300 uppercase tracking-widest border border-white/10 hover:border-white/30 px-3.5 py-1.5 rounded-full transition-all"
               id="footer-mail-trigger"

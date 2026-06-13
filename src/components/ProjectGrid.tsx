@@ -4,8 +4,11 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { LayoutGrid, List, ArrowUpRight, Play, Eye } from 'lucide-react';
-import { Project } from '../types';
+import { LayoutGrid, List, ArrowUpRight } from 'lucide-react';
+import { ClientReview, Project } from '../types';
+import { getStoredReviews } from '../data/store';
+import ClientEndorsements from './ClientEndorsements';
+import ProfileIntroBanner from './ProfileIntroBanner';
 
 interface ProjectGridProps {
   projects: Project[];
@@ -18,7 +21,12 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
   const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
   const [listHoverPos, setListHoverPos] = useState({ x: 0, y: 0 });
   const [videoFilter, setVideoFilter] = useState<'all' | 'long' | 'short'>('all');
+  const [reviews, setReviews] = useState<ClientReview[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setReviews(getStoredReviews());
+  }, []);
 
   // Dynamic filter for Video-Editing category
   const filteredProjects = activeCategory === 'video-editing'
@@ -47,6 +55,9 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
 
   return (
     <div className="w-full" ref={containerRef} id="portfolio-workspace">
+      {/* Intro visual banner */}
+      <ProfileIntroBanner className="max-w-5xl mb-20" />
+
       {/* Category header / layout toggle */}
       <div className="flex justify-between items-end border-b border-white/[0.06] pb-5 mb-10">
         <div>
@@ -288,6 +299,9 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
           )}
         </div>
       )}
+
+      {/* Clients Endorsements & Reviews */}
+      <ClientEndorsements reviews={reviews} className="mt-20" />
     </div>
   );
 }
